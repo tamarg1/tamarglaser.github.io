@@ -1,0 +1,457 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamar Glaser | Senior Principal ML Engineer & Researcher</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #2563eb;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 40px 20px;
+        }
+
+        /* Sidebar Styling */
+        aside {
+            position: sticky;
+            top: 40px;
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .profile-card h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .profile-card .subtitle {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .links-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-link {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            background: var(--bg);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .btn-link:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Main Content Styling */
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            border: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: #eff6ff;
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .company {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            background: var(--bg);
+            padding: 2px 10px;
+            border-radius: 4px;
+        }
+
+        .timeline-item ul {
+            padding-left: 20px;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        .timeline-item li {
+            margin-bottom: 6px;
+        }
+
+        .pub-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .pub-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .pub-authors {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .pub-venue {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .me-author {
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                position: relative;
+                top: 0;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Profile / Navigation Index Sidebar -->
+        <aside>
+            <div class="profile-card">
+                <h1>Tamar Glaser</h1>
+                <div class="subtitle">Computer Vision & Deep Learning Applied Researcher</div>
+                
+                <div class="contact-info">
+                    <p>📍 Johns Creek, GA</p>
+                    <p>✉️ <a href="mailto:tamarglasr@gmail.com" style="color: inherit; text-decoration: none;">tamarglasr@gmail.com</a></p>
+                    <p>📱 253-878-4825</p>
+                </div>
+
+                <div class="links-grid">
+                    <a href="https://www.linkedin.com/in/tamar-glaser" target="_blank" class="btn-link">LinkedIn Portfolio</a>
+                    <a href="#" target="_blank" class="btn-link">Google Scholar</a>
+                    <a href="#" target="_blank" class="btn-link">OpenReview Profile</a>
+                    <a href="#" target="_blank" class="btn-link">ORCID ID</a>
+                    <a href="#" target="_blank" class="btn-link">Web of Science</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Profiles -->
+        <main>
+            <!-- About Section -->
+            <section id="about">
+                <h2>About Me</h2>
+                <p>Results-oriented AI/Machine Learning leader with a proven track record of driving innovation through holistic problem-solving, spanning foundational research down to user-facing production systems. Expert in identifying, defining, and mitigating complex AI risks with a delicate blend of deep technical skill, scalable systems architecture, and strategic deployment paradigms.</p>
+            </section>
+
+            <!-- Expertise Tags -->
+            <section id="expertise">
+                <h2>Core Expertise</h2>
+                <div class="expertise-tags">
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Technical Leadership</span>
+                    <span class="tag">Responsible AI & Safety</span>
+                    <span class="tag">Generative AI Alignment</span>
+                    <span class="tag">Multimodal Systems</span>
+                    <span class="tag">Transformer Models</span>
+                    <span class="tag">System Architecture Design</span>
+                    <span class="tag">Image Processing Algorithms</span>
+                </div>
+            </section>
+
+            <!-- Research & Experience -->
+            <section id="experience">
+                <h2>Professional Experience</h2>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">Senior Principal Engineer, Machine Learning</span><br>
+                            <span class="company">Harman International</span>
+                        </div>
+                        <span class="date">2024 - Present</span>
+                    </div>
+                    <ul>
+                        <li>Spearheading the design and development of an innovative, multimodal content representation and recommendation system integrated into a user-facing product.</li>
+                        <li>Leading end-to-end machine learning pipelines, training architecture, and robust modular core systems.</li>
+                        <li>Driving the implementation of state-of-the-art transformer-based models and conducting original foundational research to close modern edge case gaps.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">Senior Machine Learning Engineer / Researcher</span><br>
+                            <span class="company">Meta Platforms, Inc.</span>
+                        </div>
+                        <span class="date">2022 - 2024</span>
+                    </div>
+                    <ul>
+                        <li>Owned cross-functional technical tracks for Responsible AI, automated content moderation, and algorithmic safety.</li>
+                        <li>Built a state-of-the-art <strong>Generated Content Detection</strong> framework reaching a 91% minimum precision-recall benchmark across diverse commercial generation models.</li>
+                        <li>Led proactive safety mitigation for <strong>Multi-modal LLMs</strong>, designing end-to-end guardrails to significantly drop adversarial downstream output risks.</li>
+                        <li>Implemented key algorithmic parity mechanisms reducing baseline bias in generative text-to-sticker spaces.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">Computer Vision & Deep Learning Researcher</span><br>
+                            <span class="company">Alibaba DAMO Academy (Machine Intelligence Israel Lab)</span>
+                        </div>
+                        <span class="date">2018 - 2021</span>
+                    </div>
+                    <ul>
+                        <li>Developed novel attention deep learning frameworks optimizing automatic web-scale user photo album event classification and content parsing.</li>
+                        <li>Architected a custom automatic event tracking engine, enhancing overall parsing accuracy metrics (F1 score) by over 50%.</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">Computer Vision Algorithms Developer</span><br>
+                            <span class="company">Elbit Systems, ISTAR Division</span>
+                        </div>
+                        <span class="date">2010 - 2018</span>
+                    </div>
+                    <ul>
+                        <li>Engineered classical and deep-learning target tracking, image registration, and object detection systems operating across multi-wavelength visual data streams.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Publications & Academic Contributions -->
+            <section id="publications">
+                <h2>Selected Publications & Peer Review</h2>
+
+                <div class="pub-item">
+                    <div class="pub-title">Fine-Grained Erasure in Text-to-Image Diffusion-based Foundation Models</div>
+                    <div class="pub-authors">K. Thakral, <span class="me-author">T. Glaser</span>, T. Hassner, M. Vatsa, R. Singh</div>
+                    <div class="pub-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">Continual Unlearning for Foundational Text-to-Image Models without Generalization Erosion</div>
+                    <div class="pub-authors">K. Thakral, <span class="me-author">T. Glaser</span>, T. Hassner, M. Vatsa, R. Singh</div>
+                    <div class="pub-venue">Under Review: IEEE Transactions on Pattern Analysis and Machine Intelligence (T-PAMI), 2025</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">The Llama 3 Herd of Models</div>
+                    <div class="pub-authors">A. Dubey, A. Jauhri, ..., <span class="me-author">T. Glaser</span>, ..., R. Ganapathy</div>
+                    <div class="pub-venue">arXiv preprint, 2024</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">Navigating Text-To-Image Generative Bias Across Indic Languages</div>
+                    <div class="pub-authors">S. Mittal, A. Sudan, R. Singh, M. Vatsa, <span class="me-author">T. Glaser</span>, T. Hassner</div>
+                    <div class="pub-venue">European Conference on Computer Vision (ECCV), 2024</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">On responsible machine learning datasets emphasizing fairness, privacy and regulatory norms with examples in biometrics and healthcare</div>
+                    <div class="pub-authors">S. Mittal, K. Thakral, R. Singh, ..., <span class="me-author">T. Glaser</span>, T. Hassner</div>
+                    <div class="pub-venue">Nature Machine Intelligence, 2024</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">PETA: Photo Albums Event Recognition using Transformers Attention</div>
+                    <div class="pub-authors"><span class="me-author">T. Glaser</span>, E. Ben-Baruch, G. Sharir, N. Zamir, A. Noy, L. Zelnik-Manor</div>
+                    <div class="pub-venue">International Conference on Pattern Recognition (ICPR), 2022</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">You Only Need a Good Embeddings Extractor to Fix Spurious Correlations</div>
+                    <div class="pub-authors">R. Mehta, V. Albiero, L. Chen, I. Evtimov, <span class="me-author">T. Glaser</span>, Z. Li, T. Hassner</div>
+                    <div class="pub-venue">Responsible Computer Vision (RCV) Workshop, ECCV, 2022 (Oral Presentation)</div>
+                </div>
+
+                <div class="pub-item">
+                    <div class="pub-title">Incorporating temporal context in bag-of-words models</div>
+                    <div class="pub-authors"><span class="me-author">T. Glaser</span>, L. Zelnik-Manor</div>
+                    <div class="pub-venue">ICCV Workshops, 2011 (Oral Presentation)</div>
+                </div>
+            </section>
+
+            <!-- Professional Service -->
+            <section id="service">
+                <h2>Professional Activities & Chairs</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div class="job-title">Co-Organizer & Program Chair</div>
+                        <span class="date">2023 - 2024</span>
+                    </div>
+                    <p style="font-size: 0.95rem; color: var(--text);">
+                        Organized the <strong>Workshop and Challenge on DeepFake Analysis and Detection (DFAD)</strong> in conjunction with <strong>CVPR 2024</strong> (Seattle) and <strong>ICCV 2023</strong> (Paris), facilitating benchmarks and research tracks around responsible generative modeling.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education">
+                <h2>Education</h2>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">M.Sc. in Electrical Engineering (Honors)</span><br>
+                            <span class="company">Technion - Israel Institute of Technology</span>
+                        </div>
+                        <span class="date">GPA: 4.0</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">Focus area: Computer Vision research thesis; Full Academic Scholarship.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <span class="job-title">B.Sc. in Electrical Engineering & B.A. in Physics (Dual Degree)</span><br>
+                            <span class="company">Technion - Israel Institute of Technology</span>
+                        </div>
+                        <span class="date">Honors</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">Graduated through the highly selective IDF "Psagot" excellence track track.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
+
+```
